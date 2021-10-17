@@ -14,21 +14,27 @@ internal class DistinctInput
             index2;
         
         Dictionary<int, int> dict = new();
-        
+
         for (int i = 0;
                     i < TwoSum.Nums.Length;
                     i++)
         {
+            dict.Add(TwoSum.Nums[i],
+                     i);
+        }
+
+        for (int i = 0;
+                i < TwoSum.Nums.Length;
+                i++)
+        {
             value2 = TwoSum.Target - TwoSum.Nums[i];
 
-            if (dict.ContainsKey(value2))
+            if (dict.ContainsKey(value2) &&
+                dict[value2] != i)
             {
                 index2 = dict[value2];
                 return new int[] { i, index2 };
             }
-
-            dict.Add(TwoSum.Nums[i],
-                     i);
         }
 
         throw new Exception("Input doesn't contain answer!");

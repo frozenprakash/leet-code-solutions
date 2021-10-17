@@ -1,14 +1,8 @@
 ﻿namespace LeetCode.Classes.Problems.TwoSum;
 
 internal class TwoSum
-{
-    record IndexNumber(int Index,
-                   int Value);
-
-    record ReturnType(IndexNumber IndexNumber1,
-                      IndexNumber IndexNumber2);
-
-    public static int[] Nums { get; set; } = { 3, 2, 3 };
+{    
+    public static int[] Nums { get; set; } = { 3, 2, 4 };
     public static int Target { get; set; } = 6;
 
     public void Execute()
@@ -25,35 +19,15 @@ internal class TwoSum
     public int[] DecidingLogic()
     {
         DistinctInput distinctInput = new();
+        DuplicateInput duplicateInput = new();
 
         if (IsDistinct())
         {
-            return distinctInput.ReverseDictionary1Pass();
+            return distinctInput.ReverseDictionary2Pass();
         }
         else
         {
-            return List2Pass();
-        }
-
-        throw new Exception("Input doesn't contain answer!");
-    }
-
-    public int[] BruteForce()
-    {
-        for (int i = 0;
-                i < Nums.Length;
-                i++)
-        {
-            for (int j = 0;
-                    j < Nums.Length;
-                    j++)
-            {
-                if (i != j &&
-                    Nums[i] + Nums[j] == Target)
-                {
-                    return new int[] { i, j };
-                }
-            }
+            return duplicateInput.Dictionary1Pass();
         }
 
         throw new Exception("Input doesn't contain answer!");
@@ -64,40 +38,6 @@ internal class TwoSum
     /// 2. Uses HashSet which is 4x faster than Array.Distinct().Count()
     /// </summary>
     /// <returns></returns>
-
-    private int[] List2Pass()
-    {
-        List<IndexNumber> lstIndexNumber = new List<IndexNumber>();
-        List<ReturnType>? lstReturnType;
-
-        for (int i = 0;
-                    i < Nums.Length;
-                    i++)
-        {
-            lstIndexNumber.Add(new IndexNumber(i,
-                                        Nums[i]));
-        }
-
-        lstReturnType = lstIndexNumber.Join(lstIndexNumber,
-                                                x => true,
-                                                y => true,
-                                                (x, y) => new ReturnType(x, y))
-                                        .ToList();
-
-        var ret = lstReturnType.Where(rt => rt.IndexNumber1.Index != rt.IndexNumber2.Index &&
-                                                                    rt.IndexNumber1.Value + rt.IndexNumber2.Value == Target)
-                                        .DefaultIfEmpty(null)
-                                        .First();
-
-        if (ret is not null)
-        {
-            return new int[] {ret.IndexNumber1.Index,
-                                    ret.IndexNumber2.Index };
-        }
-
-        throw new Exception("Input doesn't contain answer!");
-    }
-
     public bool IsDistinct()
     {
         HashSet<int> hs = new();
