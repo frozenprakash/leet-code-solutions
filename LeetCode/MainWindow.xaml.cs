@@ -1,16 +1,15 @@
-﻿namespace LeetCode
-{
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
-        {
-            InitializeComponent();
-            Close();
+﻿namespace LeetCode;
 
-            Classes.Main.Launch();
-        }
+/// <summary>
+/// Interaction logic for MainWindow.xaml
+/// </summary>
+public partial class MainWindow : Window
+{
+    public MainWindow()
+    {
+        InitializeComponent();
+        Close();
+
+        Classes.Main.Launch();
     }
 }

@@ -1,11 +1,18 @@
-﻿namespace LeetCode.Classes
+﻿global using System;
+global using System.Collections;
+global using System.Collections.Generic;
+global using System.Diagnostics;
+global using System.Linq;
+global using System.Windows;
+using LeetCode.Classes.Problems.TwoSum;
+
+namespace LeetCode.Classes;
+
+internal static class Main
 {
-    internal static class Main
+    public static void Launch()
     {
-        public static void Launch()
-        {
-            TwoSum twoSum = new();
-            twoSum.Execute();
-        }
+        TwoSum twoSum = new();
+        twoSum.Execute();
     }
 }
