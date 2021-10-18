@@ -10,7 +10,7 @@ internal class DuplicateInput
 
     public int[] ListWithLinq()
     {
-        List<IndexNumber> lstIndexNumber = new List<IndexNumber>();
+        List<IndexNumber> lstIndexNumber = new();
         List<ReturnType>? lstReturnType;
 
         for (int i = 0;
@@ -51,19 +51,26 @@ internal class DuplicateInput
                     i < TwoSum.Nums.Length;
                     i++)
         {
-            dict.Add(TwoSum.Nums[i],
-                     i);
+            dict.Add(i,
+                     TwoSum.Nums[i]);
         }
 
         for (int i = 0;
                 i < TwoSum.Nums.Length;
                 i++)
         {
+            // Input = { 7, 5, 3, 4, 8 }, Target = 9
+            // value2 = target - value1
+            // Iteraton1 → 2  = 9 - 7
+            // Iteration2 → 4 = 9 - 5 etc..
             value2 = TwoSum.Target - TwoSum.Nums[i];
-
-            if (dict.ContainsKey(value2))
+            
+            if (dict.ContainsValue(value2) &&
+                i != dict.FirstOrDefault(x => x.Value == value2)
+                            .Key) // index1 != index2
             {
-                index2 = dict[value2];
+                index2 = dict.FirstOrDefault(x => x.Value == value2)
+                                .Key;
                 return new int[] { i, index2 };
             }
         }
@@ -82,13 +89,17 @@ internal class DuplicateInput
                     i < TwoSum.Nums.Length;
                     i++)
         {
+            // Input = { 7, 5, 3, 4, 8 }, Target = 9
+            // value2 = target - value1
+            // Iteraton1 → 2  = 9 - 7
+            // Iteration2 → 4 = 9 - 5 etc..
             value2 = TwoSum.Target - TwoSum.Nums[i];
 
             if (dict.ContainsValue(value2))
             {
                 index2 = dict.FirstOrDefault(x => x.Value == value2)
                                 .Key;
-                return new int[] { i, index2 };
+                return new int[] { index2, i };
             }
 
             dict.Add(i,

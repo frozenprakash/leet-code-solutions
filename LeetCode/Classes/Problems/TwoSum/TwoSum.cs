@@ -2,8 +2,8 @@
 
 internal class TwoSum
 {    
-    public static int[] Nums { get; set; } = { 3, 2, 4 };
-    public static int Target { get; set; } = 6;
+    public static int[] Nums { get; set; } = { 4, 5, 5, 4, 8 };
+    public static int Target { get; set; } = 9;
 
     public void Execute()
     {
@@ -23,7 +23,7 @@ internal class TwoSum
 
         if (IsDistinct())
         {
-            return distinctInput.ReverseDictionary2Pass();
+            return distinctInput.ReverseDictionary1Pass();
         }
         else
         {

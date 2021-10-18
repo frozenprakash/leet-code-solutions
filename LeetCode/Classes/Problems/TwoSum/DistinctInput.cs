@@ -27,6 +27,10 @@ internal class DistinctInput
                 i < TwoSum.Nums.Length;
                 i++)
         {
+            // Input = { 7, 5, 3, 4, 8 }, Target = 9
+            // value2 = target - value1
+            // Iteraton1 → 2  = 9 - 7
+            // Iteration2 → 4 = 9 - 5 etc..
             value2 = TwoSum.Target - TwoSum.Nums[i];
 
             if (dict.ContainsKey(value2) &&
@@ -57,12 +61,16 @@ internal class DistinctInput
                     i < TwoSum.Nums.Length;
                     i++)
         {
+            // Input = { 7, 5, 3, 4, 8 }, Target = 9
+            // value2 = target - value1
+            // Iteraton1 → 2  = 9 - 7
+            // Iteration2 → 4 = 9 - 5 etc..
             value2 = TwoSum.Target - TwoSum.Nums[i];
 
             if (dict.ContainsKey(value2))
             {
                 index2 = dict[value2];
-                return new int[] { i, index2 };
+                return new int[] { index2, i };
             }
 
             dict.Add(TwoSum.Nums[i],
