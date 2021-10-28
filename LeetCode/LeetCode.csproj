@@ -10,12 +10,4 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <ItemGroup>
-    <EditorConfigFiles Remove="C:\Users\HELL\Source\Repos\LeetCode\LeetCode\.editorconfig" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="C:\Users\HELL\Source\Repos\LeetCode\LeetCode\.editorconfig" />
-  </ItemGroup>
-
 </Project>
