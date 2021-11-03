@@ -8,7 +8,7 @@ internal class TwoSum
     public void Execute()
     {
         int[] result;
-
+        
         result = DecidingLogic();
         MessageBox.Show($"[{result[0]}, {result[1]}] = {Target}"); // [0, 1] = 9
     }
